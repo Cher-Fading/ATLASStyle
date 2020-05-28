@@ -483,6 +483,21 @@ TH1F* hotTH1F(const char* name, const char* title, int nbins, Float_t *xbins, co
 
 }*/
 
+TGraph* hotTGraph(const int n, const Float_t* xl, const Float_t* yl, int mcolor, float msize = 0.5, int mstyle = 21, int lstyle = 1, float lwidth = 1){
+  
+  TGraph* g = new TGraph(n,xl,yl);
+
+  g->SetMarkerSize(msize);
+  g->SetMarkerColor(mcolor);
+  g->SetMarkerStyle(mstyle);
+  g->SetLineWidth(lwidth);
+  g->SetLineColor(mcolor);
+  g->SetLineStyle(lstyle);
+
+  return g;
+}
+
+
 TMultiGraph* hotTMultiGraph(const char* title, const char* x, const char* y, Double_t xl, Double_t xh, Double_t yl, Double_t yh){
   TMultiGraph *g1= new TMultiGraph();
   g1->GetYaxis()->SetNdivisions(508,kTRUE);
