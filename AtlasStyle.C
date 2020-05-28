@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasStyle.h"
+#include "AtlasStyle.h"
 
 #include "TROOT.h"
 

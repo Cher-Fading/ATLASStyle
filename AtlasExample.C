@@ -3,14 +3,14 @@
 
 #include "Rtypes.h"
 
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasUtils.h"
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasStyle.h"
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasLabels.h"
+#include "AtlasUtils.h"
+#include "AtlasStyle.h"
+#include "AtlasLabels.h"
 
 #ifdef __CLING__
 // these are not headers - do not treat them as such - needed for ROOT6
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasLabels.C"
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasUtils.C"
+#include "AtlasLabels.C"
+#include "AtlasUtils.C"
 #endif
 
 #include "TCanvas.h"
@@ -19,7 +19,7 @@
 #include "TH1F.h"
 #include "TRandom.h"
 #include "TGraphErrors.h"
-#include "/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasStyle.C"
+#include "AtlasStyle.C"
 
 using namespace std;
 
@@ -37,8 +37,8 @@ void AtlasExample()
 { 
 
   #ifdef __CINT__
-    gROOT->LoadMacro("/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasLabels.C");
-    gROOT->LoadMacro("/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/AtlasUtils.C");
+    gROOT->LoadMacro("AtlasLabels.C");
+    gROOT->LoadMacro("AtlasUtils.C");
   #endif
 
   SetAtlasStyle();
@@ -169,7 +169,7 @@ TGraphErrors* GetGraph(Int_t ir, Int_t ifs,Int_t icut, Int_t ipdf)
   const double mur[] = {1.0,0.25,4.0};
   const double muf[] = {1.0,0.25,4.0};
 
-  TFile *f1 = TFile::Open("/Volumes/GoogleDrive/My Drive/ATLAS/atlasstyle-00-04-02/nlofiles.root");
+  TFile *f1 = TFile::Open("nlofiles.root");
   if (f1&&debug) cout << " file opened " << endl;
 
   char gname[100];
