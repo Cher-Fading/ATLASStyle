@@ -352,7 +352,7 @@ void myText(Double_t x,Double_t y,Color_t color, const char *text, Double_t tsiz
 }
  
 
-void myBoxText(Double_t x, Double_t y,Double_t boxsize,Int_t mcolor, Float_t alpha, const char *text, Double_t lstyle, Double_t lcolor, Double_t mstyle, bool stat,Double_t tsize=0.03,int FillStyle = 1001) 
+void myBoxText(Double_t x, Double_t y,Double_t boxsize,Int_t mcolor, Float_t alpha, const char *text, Double_t lstyle, Double_t lcolor, Double_t mstyle, bool stat,Double_t tsize=0.03,int FillStyle = 1001,bool statx = true, bool staty = true) 
 {
 
   //Double_t tsize=0.03;
@@ -362,8 +362,8 @@ void myBoxText(Double_t x, Double_t y,Double_t boxsize,Int_t mcolor, Float_t alp
   l.SetNDC();
   l.DrawLatex(x,y,text);
 
-  Double_t y1=y-0.7*tsize;
-  Double_t y2=y+0.7*tsize;
+  Double_t y1=y-0.5*tsize;
+  Double_t y2=y+0.5*tsize;
   Double_t x2=x-0.3*tsize;
   Double_t x1=x2-boxsize;
 
@@ -385,16 +385,19 @@ void myBoxText(Double_t x, Double_t y,Double_t boxsize,Int_t mcolor, Float_t alp
   marker->SetMarkerSize(boxsize*10);
   marker->Draw();
 
-if (stat){
+if (stat && statx){
 
   TLine mline;
-  mline.SetLineWidth(1);
+  mline.SetLineWidth(2);
   mline.SetLineColor(lcolor);
   mline.SetLineStyle(lstyle);
   mline.DrawLineNDC(x1,y_new,x2,y_new);
+}
+
+if (stat && staty){
 
   TLine nline;
-  nline.SetLineWidth(1);
+  nline.SetLineWidth(2);
   nline.SetLineColor(lcolor);
   nline.SetLineStyle(lstyle);
   nline.DrawLineNDC(x_new,y1,x_new,y2);
@@ -537,6 +540,15 @@ TH2F* hotTH2F(const char* name, const char* title, int nbinsx, float xmin, float
   g1->GetZaxis()->SetTitle(z);
   return g1;
 }
+
+TH2F* hotTH2F(const char* name, const char* title, int nbinsx, Float_t* xbins, int nbinsy, Float_t* ybins, const char* x, const char* y, const char* z){
+  TH2F* g1 = new TH2F(name,title,nbinsx,xbins,nbinsy,ybins);
+  g1->GetXaxis()->SetTitle(x);
+  g1->GetYaxis()->SetTitle(y);
+  g1->GetZaxis()->SetTitle(z);
+  return g1;
+}
+
 /*TGraphAsymmErrors* hotTGraphErrors(const char* name, const char* title, int color, int MarkerStyle, int LineStyle, int FillStyle, float FillAlpha){
   Double_t msize = 0.8;
 
