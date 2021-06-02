@@ -533,16 +533,16 @@ TGraphErrors* hotTGraphErrors(const char* name, const char* title, int color, do
   //g1->SetFillColor(color);
 }
 
-TH2F* hotTH2F(const char* name, const char* title, int nbinsx, float xmin, float xmax, int nbinsy, float ymin, float ymax, const char* x, const char* y, const char* z){
-  TH2F* g1 = new TH2F(name,title,nbinsx,xmin,xmax,nbinsy,ymin,ymax);
+
+TH2F* hotTH2F(const char* name, const char* title, int nbinsx, Float_t* xbins, int nbinsy, Float_t* ybins, const char* x, const char* y, const char* z){
+  TH2F* g1 = new TH2F(name,title,nbinsx,xbins,nbinsy,ybins);
   g1->GetXaxis()->SetTitle(x);
   g1->GetYaxis()->SetTitle(y);
   g1->GetZaxis()->SetTitle(z);
   return g1;
 }
-
-TH2F* hotTH2F(const char* name, const char* title, int nbinsx, Float_t* xbins, int nbinsy, Float_t* ybins, const char* x, const char* y, const char* z){
-  TH2F* g1 = new TH2F(name,title,nbinsx,xbins,nbinsy,ybins);
+TH2F* hotTH2F(const char* name, const char* title, int nbinsx, float xmin, float xmax, int nbinsy, float ymin, float ymax, const char* x, const char* y, const char* z){
+  TH2F* g1 = new TH2F(name,title,nbinsx,xmin,xmax,nbinsy,ymin,ymax);
   g1->GetXaxis()->SetTitle(x);
   g1->GetYaxis()->SetTitle(y);
   g1->GetZaxis()->SetTitle(z);
