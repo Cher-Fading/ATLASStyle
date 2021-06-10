@@ -517,8 +517,12 @@ TMultiGraph* hotTMultiGraph(const char* title, const char* x, const char* y, Dou
   return g1;
 }
 
-TGraphErrors* hotTGraphErrors(const char* name, const char* title, int color, double msize, int MarkerStyle, int LineStyle, int FillStyle, float FillAlpha){
-  TGraphErrors* g1 = new TGraphErrors(name,title);
+TGraphErrors* hotTGraphErrors(int n, const char* name, const char* title, int color, double msize, int MarkerStyle, int LineStyle, int FillStyle, float FillAlpha){
+
+  TGraphErrors* g1 = new TGraphErrors(n);
+g1->SetName(name);
+g1->SetTitle(title);
+//gDirectory->Append(g1);
   g1->SetLineColor(color);
   g1->SetMarkerColor(color);
   g1->SetLineWidth(msize/0.8);
