@@ -26,7 +26,6 @@ TGraphErrors* myTGraphErrorsDivide(TGraphErrors* g1,TGraphErrors* g2) {
   if (!g1) printf("**myTGraphErrorsDivide: g1 does not exist !  \n"); 
   if (!g2) printf("**myTGraphErrorsDivide: g2 does not exist !  \n"); 
 
-
   Int_t n1=g1->GetN();
   Int_t n2=g2->GetN();
 
